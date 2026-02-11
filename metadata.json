@@ -1,0 +1,7 @@
+{
+  "name": "Kala Calculator",
+  "description": "A premium dark-themed calculator and notepad with persistent AI-powered backup features.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
