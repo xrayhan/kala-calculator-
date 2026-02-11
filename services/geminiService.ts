@@ -1,7 +1,8 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Always use new GoogleGenAI({ apiKey: process.env.API_KEY }) to initialize the client.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const explainCalculation = async (expression: string, result: string) => {
   try {

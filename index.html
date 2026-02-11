@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#0f172a">
@@ -12,28 +12,50 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --sat: env(safe-area-inset-top);
+      --sar: env(safe-area-inset-right);
+      --sab: env(safe-area-inset-bottom);
+      --sal: env(safe-area-inset-left);
+    }
     body {
       font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      -webkit-tap-highlight-color: transparent;
-      background-color: #0f172a;
+      overflow: hidden;
+      background-color: #020617;
+      height: 100dvh;
+      width: 100vw;
+      position: fixed;
+      touch-action: manipulation;
+    }
+    #root {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     .font-mono-custom {
       font-family: 'Fira Code', monospace;
     }
     ::-webkit-scrollbar {
-      width: 4px;
+      width: 0px;
     }
-    ::-webkit-scrollbar-track {
-      background: #1e293b;
+    .safe-top { padding-top: var(--sat); }
+    .safe-bottom { padding-bottom: var(--sab); }
+    
+    /* Prevent text selection on buttons for a native feel */
+    button {
+      user-select: none;
+      -webkit-user-select: none;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #475569;
-      border-radius: 10px;
+
+    /* Smooth transitions for mobile panels */
+    .mobile-panel-enter {
+      transform: translateY(20px);
+      opacity: 0;
     }
-    /* Mobile safe area padding */
-    .safe-bottom {
-      padding-bottom: env(safe-area-inset-bottom);
+    .mobile-panel-enter-active {
+      transform: translateY(0);
+      opacity: 1;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   </style>
 <script type="importmap">
